@@ -29,11 +29,6 @@ class SeqTransform a where
   transformSeq :: EquivClass a => [a] -> State Int [a]
 
 
-{-
-gen n s = gen' s (n-1) s
-gen' _ 0 accum  = accum
-gen' s n accum  = gen' s (n-1) [ x++y | x <- accum, y <- s ]
--}
 
 gen n s = foldl (\s accum -> [ x++y | x<-accum, y<-s]) s $ replicate (n-1) s
 
